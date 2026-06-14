@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+  <style>
+    .box { fill:#fff; stroke:#333; stroke-width:2; }
+    .title { font: bold 14px sans-serif; }
+    .field { font: 12px monospace; }
+    .pk { font-weight: bold; }
+    .fk { fill: #555; }
+    .arrow { stroke:#333; stroke-width:2; fill:none; marker-end: url(#arrowhead);} 
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+
+  <!-- Usuario box -->
+  <rect class="box" x="40" y="40" width="260" height="140" rx="6"/>
+  <text class="title" x="60" y="62">USUARIO</text>
+  <text class="field pk" x="60" y="88">id : UUID (PK)</text>
+  <text class="field" x="60" y="108">nome : VARCHAR(100)</text>
+  <text class="field" x="60" y="126">email : VARCHAR(100) [UNIQUE]</text>
+  <text class="field" x="60" y="144">tipo_usuario : ENUM</text>
+
+  <!-- Recurso box -->
+  <rect class="box" x="40" y="210" width="260" height="160" rx="6"/>
+  <text class="title" x="60" y="232">RECURSO</text>
+  <text class="field pk" x="60" y="258">id : UUID (PK)</text>
+  <text class="field" x="60" y="278">nome : VARCHAR(100)</text>
+  <text class="field" x="60" y="296">tipo_recurso : ENUM</text>
+  <text class="field" x="60" y="314">status : ENUM</text>
+  <text class="field" x="60" y="332">localizacao : VARCHAR(100)</text>
+
+  <!-- Reserva box -->
+  <rect class="box" x="420" y="120" width="380" height="200" rx="6"/>
+  <text class="title" x="440" y="142">RESERVA</text>
+  <text class="field pk" x="440" y="168">id : UUID (PK)</text>
+  <text class="field fk" x="440" y="188">usuario_id : UUID (FK -> USUARIO.id)</text>
+  <text class="field fk" x="440" y="208">recurso_id : UUID (FK -> RECURSO.id)</text>
+  <text class="field" x="440" y="228">data_inicio : DATETIME</text>
+  <text class="field" x="440" y="248">data_fim : DATETIME</text>
+  <text class="field" x="440" y="268">status : ENUM</text>
+
+  <!-- Relations -->
+  <path class="arrow" d="M300 110 L420 170" />
+  <text x="320" y="92" font-size="12">1</text>
+  <text x="390" y="132" font-size="12">0..N</text>
+
+  <path class="arrow" d="M300 300 L420 200" />
+  <text x="320" y="320" font-size="12">1</text>
+  <text x="390" y="262" font-size="12">0..N</text>
+
+  <!-- captions -->
+  <text x="60" y="18" font-size="13" fill="#222">Diagrama ER simplificado — Usuário, Recurso, Reserva</text>
+</svg>

@@ -1,0 +1,30 @@
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: sistema_reservas_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_password_local
+      POSTGRES_DB: sistema_reservas
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  api:
+    build: .
+    container_name: sistema_reservas_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres_password_local@db:5432/sistema_reservas
+      - SECRET_KEY=sua_chave_secreta_super_segura_para_jwt
+      - PORT=8000
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
