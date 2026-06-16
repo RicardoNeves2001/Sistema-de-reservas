@@ -16,7 +16,7 @@ docker compose up --build
 
 A API ficará disponível em:
 
-- http://localhost:8000
+- http://localhost:8000/openapi.json
 - http://localhost:8000/docs
 
 ## Método local com Python
