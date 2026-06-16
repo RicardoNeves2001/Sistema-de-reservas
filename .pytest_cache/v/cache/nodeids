@@ -1,0 +1,15 @@
+[
+  "tests/test_reservas.py::test_cancelar_reserva_com_menor_1_hora",
+  "tests/test_reservas.py::test_cancelar_reserva_com_sucesso",
+  "tests/test_reservas.py::test_cancelar_reserva_nao_confirmada",
+  "tests/test_reservas.py::test_criar_reserva_limite_aluno",
+  "tests/test_reservas.py::test_criar_reserva_recurso_inativo",
+  "tests/test_reservas.py::test_criar_reserva_recurso_manutencao",
+  "tests/test_reservas.py::test_criar_reserva_sobreposicao",
+  "tests/test_reservas.py::test_criar_reserva_sucesso",
+  "tests/test_reservas.py::test_criar_reserva_usuario_suspenso",
+  "tests/test_reservas.py::test_listar_reservas_paginadas",
+  "tests/test_reservas.py::test_professor_multiplas_reservas_sem_limite",
+  "tests/test_reservas.py::test_sobreposicao_reserva_cancelada_nao_impede",
+  "tests/test_reservas.py::test_usuario_ou_recurso_nao_encontrado"
+]

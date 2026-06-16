@@ -5,24 +5,15 @@ from fastapi.responses import JSONResponse
 from fastapi.exceptions import HTTPException
 from sqlalchemy.exc import OperationalError
 
-from APP.core.database import Base, engine
+from APP.core.database import engine
 from APP.routers import reserva_router
-from APP.exceptions import BusinessRuleException, ErrorResponse
+from APP.exceptions import BusinessRuleException
 
 app = FastAPI(title="Sistema Multiúso de Reservas", version="1.0.0")
 
-@app.on_event("startup")
-async def startup_event():
-    retries = 5
-    while retries > 0:
-        try:
-            Base.metadata.create_all(bind=engine)
-            break
-        except OperationalError:
-            retries -= 1
-            if retries == 0:
-                raise
-            time.sleep(2)
+# Observação: tabelas devem ser criadas via Alembic (fonte oficial de schema).
+# O startup não executa Base.metadata.create_all() para evitar desvio entre modelos e migrations.
+
 
 # Exception Handler para exceções de negócio estruturadas
 @app.exception_handler(BusinessRuleException)

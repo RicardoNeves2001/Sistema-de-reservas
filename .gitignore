@@ -1,0 +1,28 @@
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+*.log
+
+# Virtualenv
+.venv/
+venv/
+
+# Databases (dev/local)
+*.db
+*.sqlite3
+
+# Alembic generated
+alembic/.DS_Store
+
+# Environment
+.env
+.env.*
+
+# Docker
+*.pid
+
